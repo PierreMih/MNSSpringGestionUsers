@@ -36,7 +36,7 @@ public class UserController {
         userService.delete(us);
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<User> create(Long id, String firstName, String lastName, Date date, String mail, String passWord){
         return  ResponseEntity.ok(userService.create(id, firstName, lastName, date, mail, passWord));
     }

@@ -1,19 +1,33 @@
 package fr.mns.erasmusnetwork.gestionUsers.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.*;
+
 import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Entity
+@Table(name="user")
 public class User implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false,unique = true,updatable = false)
     private Long id;
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private Date birthDate;
+    @Column
     //bloquer ou pas
     private String mail;
+    @Column
     private String passWord;
+    @Column
     private Boolean blocked;
 
 
