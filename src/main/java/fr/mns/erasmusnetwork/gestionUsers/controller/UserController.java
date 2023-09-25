@@ -6,7 +6,6 @@ import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +16,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/")
     public ResponseEntity<List<User>> getAll(){
@@ -48,7 +50,7 @@ public class UserController {
 
     @GetMapping(value = "/getByEmail")
     public ResponseEntity<User> getByEmail(@RequestBody @Valid GetUserByEmailRequest request){
-        User user = null;
+        User user;
 
         try {
             user = userService.getByEmail(request.email);
