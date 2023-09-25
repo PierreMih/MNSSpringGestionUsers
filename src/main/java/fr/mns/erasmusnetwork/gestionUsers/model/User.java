@@ -17,12 +17,6 @@ public class User implements Serializable {
     @Column(nullable = false,unique = true,updatable = false)
     public Long id;
     @Column
-    public String firstname;
-    @Column
-    public String lastname;
-    @Column
-    public Date birthdate;
-    @Column
     //bloquer ou pas
     public String mail;
     @Column
@@ -33,9 +27,6 @@ public class User implements Serializable {
 
     public User(Long id, String firstname, String lastname, Date birthdate, String mail, String password){
         this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.birthdate = birthdate;
         this.mail = mail;
         this.password = password;
         this.blocked = false;
@@ -45,9 +36,6 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", birthdate=" + birthdate +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", blocked=" + blocked +
@@ -63,33 +51,10 @@ public class User implements Serializable {
         return id;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
 
     public void setMail(String mail) {
         this.mail = mail;

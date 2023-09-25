@@ -39,11 +39,8 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public User update(Long id, String firstname, String lastname, Date date, String mail, String password){
+    public User update(Long id, String mail, String password){
         User us = userRepository.findById(id).orElseThrow();
-        us.setFirstname(firstname);
-        us.setLastname(lastname);
-        us.setBirthdate(date);
         us.setMail(mail);
         us.setPassword(password);
         userRepository.save(us);
