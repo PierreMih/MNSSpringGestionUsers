@@ -1,7 +1,9 @@
 package fr.mns.erasmusnetwork.gestionUsers.controller;
 
+import fr.mns.erasmusnetwork.gestionUsers.dto.CreateUserRequest;
 import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +39,9 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<User> create(Long id, String firstname, String lastname, Date date, String mail, String password){
-        return  ResponseEntity.ok(userService.create(id, firstname, lastname, date, mail, password));
+    public ResponseEntity<User> create(@RequestBody @Valid CreateUserRequest request){
+//    public ResponseEntity<User> create(Long id, String firstname, String lastname, Date date, String mail, String password){
+        return  ResponseEntity.ok(userService.create(request.id, request.firstname, request.lastname, request.birthdate, request.mail, request.password));
     }
 
 

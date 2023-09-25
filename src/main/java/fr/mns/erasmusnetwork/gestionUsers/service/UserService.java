@@ -41,11 +41,11 @@ public class UserService {
 
     public User update(Long id, String firstname, String lastname, Date date, String mail, String password){
         User us = userRepository.findById(id).orElseThrow();
-        us.setFirstName(firstname);
-        us.setLastName(lastname);
-        us.setBirthDate(date);
+        us.setFirstname(firstname);
+        us.setLastname(lastname);
+        us.setBirthdate(date);
         us.setMail(mail);
-        us.setPassWord(password);
+        us.setPassword(password);
         userRepository.save(us);
         return  us;
     }

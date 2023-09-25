@@ -15,27 +15,27 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,unique = true,updatable = false)
-    private Long id;
+    public Long id;
     @Column
-    private String firstname;
+    public String firstname;
     @Column
-    private String lastname;
+    public String lastname;
     @Column
-    private Date birthDate;
+    public Date birthdate;
     @Column
     //bloquer ou pas
-    private String mail;
+    public String mail;
     @Column
-    private String password;
+    public String password;
     @Column
-    private Boolean blocked;
+    public Boolean blocked;
 
 
-    public User(Long id, String firstname, String lastname, Date date, String mail, String password){
+    public User(Long id, String firstname, String lastname, Date birthdate, String mail, String password){
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birthDate = date;
+        this.birthdate = birthdate;
         this.mail = mail;
         this.password = password;
         this.blocked = false;
@@ -47,7 +47,7 @@ public class User implements Serializable {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", birthDate=" + birthDate +
+                ", birthdate=" + birthdate +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", blocked=" + blocked +
@@ -63,39 +63,39 @@ public class User implements Serializable {
         return id;
     }
 
-    public String getFirstName() {
+    public String getFirstname() {
         return firstname;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastname;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setFirstName(String firstname) {
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
-    public void setLastName(String lastname) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public void setMail(String mail) {
         this.mail = mail;
     }
 
-    public void setPassWord(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -107,7 +107,7 @@ public class User implements Serializable {
         return mail;
     }
 
-    public String getPassWord() {
+    public String getPassword() {
         return password;
     }
 
