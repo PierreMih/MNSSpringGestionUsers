@@ -37,8 +37,8 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<User> create(Long id, String firstName, String lastName, Date date, String mail, String passWord){
-        return  ResponseEntity.ok(userService.create(id, firstName, lastName, date, mail, passWord));
+    public ResponseEntity<User> create(Long id, String firstname, String lastname, Date date, String mail, String password){
+        return  ResponseEntity.ok(userService.create(id, firstname, lastname, date, mail, password));
     }
 
 

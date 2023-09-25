@@ -28,8 +28,8 @@ public class UserService {
 
     //create, delete, update
 
-    public User create(Long id, String firstName, String lastName, Date date, String mail, String passWord){
-        User us = new User(id, firstName, lastName, date, mail, passWord);
+    public User create(Long id, String firstname, String lastname, Date date, String mail, String password){
+        User us = new User(id, firstname, lastname, date, mail, password);
         // à vérifier
         userRepository.save(us);
         return  us;
@@ -39,13 +39,13 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public User update(Long id, String firstName, String lastName, Date date, String mail, String passWord){
+    public User update(Long id, String firstname, String lastname, Date date, String mail, String password){
         User us = userRepository.findById(id).orElseThrow();
-        us.setFirstName(firstName);
-        us.setLastName(lastName);
+        us.setFirstName(firstname);
+        us.setLastName(lastname);
         us.setBirthDate(date);
         us.setMail(mail);
-        us.setPassWord(passWord);
+        us.setPassWord(password);
         userRepository.save(us);
         return  us;
     }

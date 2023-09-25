@@ -17,27 +17,27 @@ public class User implements Serializable {
     @Column(nullable = false,unique = true,updatable = false)
     private Long id;
     @Column
-    private String firstName;
+    private String firstname;
     @Column
-    private String lastName;
+    private String lastname;
     @Column
     private Date birthDate;
     @Column
     //bloquer ou pas
     private String mail;
     @Column
-    private String passWord;
+    private String password;
     @Column
     private Boolean blocked;
 
 
-    public User(Long id, String firstName, String lastName, Date date, String mail, String passWord){
+    public User(Long id, String firstname, String lastname, Date date, String mail, String password){
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.birthDate = date;
         this.mail = mail;
-        this.passWord = passWord;
+        this.password = password;
         this.blocked = false;
     }
 
@@ -45,11 +45,11 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", birthDate=" + birthDate +
                 ", mail='" + mail + '\'' +
-                ", passWord='" + passWord + '\'' +
+                ", password='" + password + '\'' +
                 ", blocked=" + blocked +
                 '}';
     }
@@ -64,11 +64,11 @@ public class User implements Serializable {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public Date getBirthDate() {
@@ -79,12 +79,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setBirthDate(Date birthDate) {
@@ -95,8 +95,8 @@ public class User implements Serializable {
         this.mail = mail;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassWord(String password) {
+        this.password = password;
     }
 
     public void setBlocked(Boolean blocked) {
@@ -108,7 +108,7 @@ public class User implements Serializable {
     }
 
     public String getPassWord() {
-        return passWord;
+        return password;
     }
 
     public Boolean getBlocked() {
