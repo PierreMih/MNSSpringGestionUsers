@@ -24,8 +24,7 @@ public class User implements Serializable {
     public Boolean blocked;
 
 
-    public User(Long id, String firstname, String lastname, Date birthdate, String email, String password){
-        this.id = id;
+    public User(String firstname, String lastname, Date birthdate, String email, String password){
         this.email = email;
         this.password = password;
         this.blocked = false;

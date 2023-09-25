@@ -41,7 +41,7 @@ public class UserController {
 
     @PostMapping("/")
     public ResponseEntity<User> create(@RequestBody @Valid CreateUserRequest request){
-        return  ResponseEntity.ok(userService.create(request.id, request.firstname, request.lastname, request.birthdate, request.email, request.password));
+        return  ResponseEntity.ok(userService.create(request.firstname, request.lastname, request.birthdate, request.email, request.password));
     }
 
     @GetMapping(value = "/getByEmail")
