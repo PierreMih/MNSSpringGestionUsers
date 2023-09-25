@@ -2,6 +2,7 @@ package fr.mns.erasmusnetwork.gestionUsers.service;
 
 import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,11 +40,17 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public User update(Long id, String mail, String password){
+    public User update(Long id, String email, String password){
         User us = userRepository.findById(id).orElseThrow();
-        us.setMail(mail);
+        us.setEmail(email);
         us.setPassword(password);
         userRepository.save(us);
         return  us;
+    }
+
+    public User getByEmail(String email) throws EntityNotFoundException {
+        User user = userRepository.findOneByEmail(email);
+        if(user == null) throw new EntityNotFoundException(email + " non trouvé");
+        return user;
     }
 }

@@ -1,14 +1,15 @@
 package fr.mns.erasmusnetwork.gestionUsers.controller;
 
 import fr.mns.erasmusnetwork.gestionUsers.dto.CreateUserRequest;
+import fr.mns.erasmusnetwork.gestionUsers.dto.GetUserByEmailRequest;
 import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.service.UserService;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -40,11 +41,21 @@ public class UserController {
 
     @PostMapping("/")
     public ResponseEntity<User> create(@RequestBody @Valid CreateUserRequest request){
-//    public ResponseEntity<User> create(Long id, String firstname, String lastname, Date date, String mail, String password){
-        return  ResponseEntity.ok(userService.create(request.id, request.firstname, request.lastname, request.birthdate, request.mail, request.password));
+        return  ResponseEntity.ok(userService.create(request.id, request.firstname, request.lastname, request.birthdate, request.email, request.password));
     }
 
+    @GetMapping(value = "/getByEmail")
+    public ResponseEntity<User> getByEmail(@RequestBody @Valid GetUserByEmailRequest request){
+        User user = null;
 
+        try {
+            user = userService.getByEmail(request.email);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build(); //Pourquoi ça renvoie rien??
+        }
+
+        return ResponseEntity.ok(user);
+    }
 
 
 

@@ -3,7 +3,6 @@ package fr.mns.erasmusnetwork.gestionUsers.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,16 +17,16 @@ public class User implements Serializable {
     public Long id;
     @Column
     //bloquer ou pas
-    public String mail;
+    public String email;
     @Column
     public String password;
     @Column
     public Boolean blocked;
 
 
-    public User(Long id, String firstname, String lastname, Date birthdate, String mail, String password){
+    public User(Long id, String firstname, String lastname, Date birthdate, String email, String password){
         this.id = id;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
         this.blocked = false;
     }
@@ -36,7 +35,7 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", mail='" + mail + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", blocked=" + blocked +
                 '}';
@@ -56,8 +55,8 @@ public class User implements Serializable {
     }
 
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String mail) {
+        this.email = mail;
     }
 
     public void setPassword(String password) {
@@ -68,8 +67,8 @@ public class User implements Serializable {
         this.blocked = blocked;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
     public String getPassword() {
