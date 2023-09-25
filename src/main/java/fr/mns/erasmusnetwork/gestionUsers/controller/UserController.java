@@ -64,7 +64,18 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-
-
-
+    @PutMapping(value = "/{id}/enable")
+    public ResponseEntity<User> enableUser(@PathVariable("id") Long id){
+        User user = userService.getById(id);
+        if(user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found");
+        user = userService.enableUser(user);
+        return ResponseEntity.ok(user);
+    }
+    @PutMapping(value = "/{id}/disable")
+    public ResponseEntity<User> disableUser(@PathVariable("id") Long id){
+        User user = userService.getById(id);
+        if(user == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found");
+        user = userService.disableUser(user);
+        return ResponseEntity.ok(user);
+    }
 }

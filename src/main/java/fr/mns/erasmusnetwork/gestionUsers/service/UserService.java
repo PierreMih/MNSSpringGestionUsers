@@ -53,4 +53,15 @@ public class UserService {
         if(user == null) throw new EntityNotFoundException(email + " non trouvé");
         return user;
     }
+
+    public User enableUser(User user){
+        user.setBlocked(false);
+        userRepository.save(user);
+        return user;
+    }
+    public User disableUser(User user){
+        user.setBlocked(true);
+        userRepository.save(user);
+        return user;
+    }
 }
