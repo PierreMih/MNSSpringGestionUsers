@@ -1,6 +1,6 @@
 package fr.mns.erasmusnetwork.gestionUsers.repository;
 
-import fr.mns.erasmusnetwork.gestionUsers.entities.User;
+import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

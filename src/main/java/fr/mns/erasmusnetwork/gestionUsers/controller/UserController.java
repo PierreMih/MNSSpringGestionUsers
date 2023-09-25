@@ -1,6 +1,6 @@
 package fr.mns.erasmusnetwork.gestionUsers.controller;
 
-import fr.mns.erasmusnetwork.gestionUsers.entities.User;
+import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

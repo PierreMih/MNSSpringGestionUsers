@@ -1,6 +1,6 @@
 package fr.mns.erasmusnetwork.gestionUsers.service;
 
-import fr.mns.erasmusnetwork.gestionUsers.entities.User;
+import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
