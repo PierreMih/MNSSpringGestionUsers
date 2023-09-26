@@ -6,11 +6,13 @@ import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -78,4 +80,12 @@ public class UserController {
         user = userService.disableUser(user);
         return ResponseEntity.ok(user);
     }
+
+//    @GetMapping(value = "/getCurrentUser")
+//    public ResponseEntity<User>  getCurrentUser(){
+//        String name = principal.getName();
+//        List<User> users = userService.getAll();
+//        User user = users.stream().filter(u -> u.email == name).findFirst().orElseThrow();
+//        return ResponseEntity.ok(user);
+//    }
 }
