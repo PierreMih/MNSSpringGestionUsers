@@ -48,7 +48,7 @@ public class UserController {
         return  ResponseEntity.ok(userService.create(request.email, request.password));
     }
 
-    @GetMapping(value = "/getByEmail")
+    @PostMapping(value = "/getByEmail")
     public ResponseEntity<User> getByEmail(@RequestBody @Valid GetUserByEmailRequest request){
         User user;
 
