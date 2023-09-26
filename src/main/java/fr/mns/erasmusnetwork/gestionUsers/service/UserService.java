@@ -29,8 +29,8 @@ public class UserService {
 
     //create, delete, update
 
-    public User create(String firstname, String lastname, Date date, String mail, String password){
-        User us = new User(firstname, lastname, date, mail, password);
+    public User create(String mail, String password){
+        User us = new User(mail, password);
         // à vérifier
         userRepository.save(us);
         return  us;

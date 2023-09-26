@@ -16,7 +16,6 @@ public class User implements Serializable {
     @Column(nullable = false,unique = true,updatable = false)
     public Long id;
     @Column
-    //bloquer ou pas
     public String email;
     @Column
     public String password;
@@ -24,7 +23,7 @@ public class User implements Serializable {
     public Boolean blocked;
 
 
-    public User(String firstname, String lastname, Date birthdate, String email, String password){
+    public User(String email, String password){
         this.email = email;
         this.password = password;
         this.blocked = false;
