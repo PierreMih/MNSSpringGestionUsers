@@ -3,17 +3,18 @@ package fr.mns.erasmusnetwork.gestionUsers.service;
 import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public List<User> getAll(){
         return userRepository.findAll();
@@ -27,11 +28,8 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    //create, delete, update
-
-    public User create(String firstname, String lastname, Date date, String mail, String password){
-        User us = new User(firstname, lastname, date, mail, password);
-        // à vérifier
+    public User create(String mail, String password){
+        User us = new User(mail, password);
         userRepository.save(us);
         return  us;
     }
