@@ -28,11 +28,8 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    //create, delete, update
-
     public User create(String mail, String password){
         User us = new User(mail, password);
-        // à vérifier
         userRepository.save(us);
         return  us;
     }
