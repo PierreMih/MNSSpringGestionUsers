@@ -2,6 +2,7 @@ package fr.mns.erasmusnetwork.gestionUsers.service;
 
 import fr.mns.erasmusnetwork.gestionUsers.model.User;
 import fr.mns.erasmusnetwork.gestionUsers.repository.UserRepository;
+import org.hibernate.mapping.Selectable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +15,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.Console;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -32,6 +37,20 @@ class UserServiceTest {
 
     @Test
     void getAll() {
+        User us1 = new User("laaouine@locakim.com", "0263");
+        User us2 = new User("pomme@gmail.fr","0605");
+        User us3 = new User("selim@icloud.fr","5896547");
+
+        RestTemplate restTemplate = mock(RestTemplate.class);
+        when(restTemplate.getForEntity("localhost:8084/users/", User.class))
+                .thenReturn(new ResponseEntity<>(us1, HttpStatus.OK));
+        ResponseEntity<User> responseEntity = restTemplate.getForEntity("localhost:8084/users/", User.class);
+
+
+        //....
+
+
+
     }
 
     @Test
