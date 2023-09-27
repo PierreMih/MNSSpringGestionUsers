@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.Console;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -34,6 +36,12 @@ class UserServiceTest {
 
     @Test
     void save() {
+        User user = new User("laaouine@gmail.com", "4656");
+        RestTemplate restTemplate = mock(RestTemplate.class);
+        when(restTemplate.getForEntity("localhost:8084/users/", User.class))
+                .thenReturn(new ResponseEntity<>(user, HttpStatus.OK));
+        ResponseEntity<User> responseEntity = restTemplate.getForEntity("localhost:8084/users/", User.class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     @Test
@@ -43,7 +51,12 @@ class UserServiceTest {
         when(restTemplate.getForEntity("localhost:8084/users/", User.class))
                 .thenReturn(new ResponseEntity<>(user, HttpStatus.OK));
         ResponseEntity<User> responseEntity = restTemplate.getForEntity("localhost:8084/users/", User.class);
+        User responseBody = responseEntity.getBody();
+
+        assertEquals(user.getId(), responseBody.getId());
+        System.out.println(user.getPassword()+" et : "+responseBody.getPassword());
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(user.getId(), responseBody.getId());
     }
     @Test
     void getByEmail() {
@@ -52,7 +65,12 @@ class UserServiceTest {
         when(restTemplate.getForEntity("localhost:8084/users/getByEmail", User.class))
                 .thenReturn(new ResponseEntity<>(user, HttpStatus.OK));
         ResponseEntity<User> responseEntity = restTemplate.getForEntity("localhost:8084/users/getByEmail", User.class);
+
+        //Les test assertions
+        User responseBody = responseEntity.getBody();
+        System.out.println(user.getEmail()+" et : "+responseBody.getEmail());
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(user.getEmail(), responseBody.getEmail());
     }
 
     @Test
